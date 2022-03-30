@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import Hotel from './Hotel.js';
 
 const { Schema } = mongoose;
 
