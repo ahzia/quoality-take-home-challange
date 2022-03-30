@@ -18,4 +18,4 @@ const fields = {
 
 const schema = new Schema(fields);
 
-export default mongoose.model('Hotel', schema);
+export default mongoose.model('Service', schema);
