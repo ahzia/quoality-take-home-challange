@@ -2,8 +2,8 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import 'dotenv/config';
-import chainsRoutes from './routes/chain.js';
-import hotelsRoute from './routes/hotel.js';
+import chainsRoutes from './routes/chains.js';
+import hotelsRoute from './routes/hotels.js';
 
 const app = express();
 
