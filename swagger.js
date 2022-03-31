@@ -7,7 +7,7 @@ const doc = {
     title: 'QUOALITY API',
   },
   host: 'quoality.herokuapp.com',
-  schemes: ['http'],
+  schemes: ['https'],
 };
 
 swaggerAutogen()(outputFile, endpointsFiles, doc);
