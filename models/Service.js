@@ -8,12 +8,6 @@ const fields = {
     required: true,
     unique: true,
   },
-  details: {
-    type: String,
-  },
-  prices: {
-    type: Number,
-  },
 };
 
 const schema = new Schema(fields);
