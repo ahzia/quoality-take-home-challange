@@ -2,13 +2,19 @@ import 'dotenv/config';
 import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
+import swaggerUi from 'swagger-ui-express';
+import { createRequire } from 'module';
 import chainsRoutes from './routes/chains.js';
 import hotelsRoute from './routes/hotels.js';
 import servicesRoute from './routes/services.js';
 import guestsRoute from './routes/guests.js';
 
+const require = createRequire(import.meta.url);
+const swaggerFile = require('./swagger_output.json');
+
 const app = express();
 
+app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.use(bodyParser.json());
 app.use('/chains', chainsRoutes);
 app.use('/hotels', hotelsRoute);
