@@ -8,7 +8,7 @@
   "host": "quoality.herokuapp.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/chains/": {
