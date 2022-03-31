@@ -47,7 +47,7 @@ export const destroy = async (req, res) => {
   const { _id } = req.params;
   try {
     await Service.deleteOne({ _id });
-    res.status(204).send({message: 'Service deleted.'});
+    res.status(204).send({ message: 'Service deleted.' });
   } catch (err) {
     res.send(err);
   }

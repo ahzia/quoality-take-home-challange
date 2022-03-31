@@ -88,7 +88,37 @@ export const createService = async (req, res) => {
     await Hotel.updateOne({ _id: newSerivce.hotel }, { $push: { services: newSerivce._id } });
     res.send(newSerivce);
   } catch (err) {
-    console.log(err);
+    res.send(err);
+  }
+};
+
+export const showAllGuests = async (req, res) => {
+  const { _id } = req.params;
+  try {
+    const guests = await Guest.find({ hotel: _id });
+    res.send(guests);
+  } catch (err) {
+    res.send(err);
+  }
+};
+
+export const createGuest = async (req, res) => {
+  const { _id } = req.params;
+  const {
+    name, room, checkin, checkout,
+  } = req.body;
+  const newGuest = new Guest({
+    name,
+    room,
+    checkin,
+    checkout,
+    hotel: _id,
+  });
+  try {
+    await newGuest.save();
+    await Hotel.updateOne({ _id: newGuest.hotel }, { $push: { guests: newGuest._id } });
+    res.send(newGuest);
+  } catch (err) {
     res.send(err);
   }
 };
