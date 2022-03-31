@@ -22,7 +22,7 @@ export const create = async (req, res) => {
   });
   try {
     await hotel.save();
-    res.send(hotel);
+    res.status(201).send(hotel);
   } catch (err) {
     res.send(err);
   }
@@ -60,7 +60,7 @@ export const destroy = async (req, res) => {
   const { _id } = req.params;
   try {
     await Hotel.deleteOne({ _id });
-    res.status(204).send('Hotel deleted.');
+    res.status(204);
   } catch (err) {
     res.send(err);
   }
@@ -86,7 +86,7 @@ export const createService = async (req, res) => {
   try {
     await newSerivce.save();
     await Hotel.updateOne({ _id: newSerivce.hotel }, { $push: { services: newSerivce._id } });
-    res.send(newSerivce);
+    res.status(201).send(newSerivce);
   } catch (err) {
     res.send(err);
   }
@@ -117,7 +117,7 @@ export const createGuest = async (req, res) => {
   try {
     await newGuest.save();
     await Hotel.updateOne({ _id: newGuest.hotel }, { $push: { guests: newGuest._id } });
-    res.send(newGuest);
+    res.status(201).send(newGuest);
   } catch (err) {
     res.send(err);
   }

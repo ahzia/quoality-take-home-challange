@@ -16,10 +16,9 @@ export const show = async (req, res) => {
     if (service) {
       res.send(service);
     } else {
-      res.status(404).send({ message: 'Service not found' });
+      res.status(404);
     }
   } catch (err) {
-    console.log(err);
     res.send(err);
   }
 };
@@ -58,7 +57,7 @@ export const createItem = async (req, res) => {
   const newItem = req.body;
   try {
     await Service.updateOne({ _id }, { $push: { items: newItem } });
-    res.send('Item added');
+    res.status(201).send('Item added');
   } catch (err) {
     res.send(err);
   }
