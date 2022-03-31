@@ -24,14 +24,10 @@ const fields = {
     type: Schema.Types.ObjectId,
     ref: 'Guest',
   }],
-  services: [
-    {
-      service: {
-        type: Schema.Types.ObjectId,
-        ref: 'Service',
-      },
-      items: []
-    }],
+  services: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Service',
+  }]
 };
 
 const schema = new Schema(fields);
