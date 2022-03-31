@@ -9,25 +9,13 @@ const fields = {
   },
   hotel: {
     type: Schema.Types.ObjectId,
-    ref: "Hotel",
+    ref: 'Hotel',
   },
   chain: {
     type: Schema.Types.ObjectId,
-    ref: "Chain",
+    ref: 'Chain',
   },
-  items: [{
-    name: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    price: {
-      type: Number,
-    },
-    details: {
-      type: String,
-    }
-  }]
+  items: [],
 };
 
 const schema = new Schema(fields);

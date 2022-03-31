@@ -1,10 +1,12 @@
+import Guest from '../models/Guest.js';
 import Hotel from '../models/Hotel.js';
+import Service from '../models/Service.js';
 
 export const showAll = async (req, res) => {
   const { nonChain } = req.body;
   let hotel;
   if (nonChain) {
-    hotel = await Hotel.find({'isChain':false});
+    hotel = await Hotel.find({ isChain: false });
   } else {
     hotel = await Hotel.find();
   }
@@ -67,7 +69,7 @@ export const destroy = async (req, res) => {
 export const showAllServices = async (req, res) => {
   const { _id } = req.params;
   try {
-    const services = await Hotel.find({ hotel: _id });
+    const services = await Service.find({ hotel: _id });
     res.send(services);
   } catch (err) {
     res.send(err);
@@ -76,16 +78,17 @@ export const showAllServices = async (req, res) => {
 
 export const createService = async (req, res) => {
   const { _id } = req.params;
-  const { name, address } = req.body;
-  const newServce = new Hotel({
+  const { name } = req.body;
+  const newSerivce = new Service({
     name,
     hotel: _id,
   });
   try {
-    await newServce.save();
-    await hotel.updateOne({ _id: newServce.hotel }, { $push: { services: newServce._id } });
-    res.send(newServce);
+    await newSerivce.save();
+    await Hotel.updateOne({ _id: newSerivce.hotel }, { $push: { services: newSerivce._id } });
+    res.send(newSerivce);
   } catch (err) {
+    console.log(err);
     res.send(err);
   }
 };

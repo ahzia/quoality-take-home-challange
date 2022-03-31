@@ -27,7 +27,7 @@ const fields = {
   services: [{
     type: Schema.Types.ObjectId,
     ref: 'Service',
-  }]
+  }],
 };
 
 const schema = new Schema(fields);

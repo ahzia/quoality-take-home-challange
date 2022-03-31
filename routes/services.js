@@ -1,6 +1,6 @@
 import express from 'express';
 import {
-  showAll, show, destroy, update, createItem
+  showAll, show, destroy, update, createItem,
 } from '../controllers/services.js';
 
 const router = express.Router();

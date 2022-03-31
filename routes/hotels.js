@@ -1,6 +1,6 @@
 import express from 'express';
 import {
-  showAll, create, show, destroy, update, showAllServices, createService
+  showAll, create, show, destroy, update, showAllServices, createService,
 } from '../controllers/hotels.js';
 
 const router = express.Router();

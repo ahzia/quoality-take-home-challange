@@ -1,16 +1,25 @@
 import Service from '../models/Service.js';
 
 export const showAll = async (req, res) => {
-  services = await Service.find();
-  res.send(services);
+  try {
+    const services = await Service.find();
+    res.send(services);
+  } catch (err) {
+    res.send(err);
+  }
 };
 
 export const show = async (req, res) => {
   const { _id } = req.params;
   try {
     const service = await Service.findOne({ _id });
-    res.send(service);
+    if (service) {
+      res.send(service);
+    } else {
+      res.status(404).send({ message: 'Service not found' });
+    }
   } catch (err) {
+    console.log(err);
     res.send(err);
   }
 };
@@ -20,12 +29,15 @@ export const update = async (req, res) => {
   const { name } = req.body;
   try {
     const service = await Service.findOne({ _id });
-    if (name) {
-      service.name = name;
+    if (service) {
+      if (name) {
+        service.name = name;
+      }
+      await service.save();
+      res.send(service);
+    } else {
+      res.status(404).send({ message: 'Service not found' });
     }
-
-    await service.save();
-    res.send(service);
   } catch (err) {
     res.send(err);
   }
@@ -35,7 +47,7 @@ export const destroy = async (req, res) => {
   const { _id } = req.params;
   try {
     await Service.deleteOne({ _id });
-    res.status(204).send('Service deleted.');
+    res.status(204).send({message: 'Service deleted.'});
   } catch (err) {
     res.send(err);
   }
@@ -43,15 +55,10 @@ export const destroy = async (req, res) => {
 
 export const createItem = async (req, res) => {
   const { _id } = req.params;
-  const { name, price, details } = req.body;
-  const newItem = {
-    name,
-    price,
-    details,
-  };
+  const newItem = req.body;
   try {
-    const item = await Service.updateOne({ _id }, { $push: { items: newItem } });
-    res.send(item);
+    await Service.updateOne({ _id }, { $push: { items: newItem } });
+    res.send('Item added');
   } catch (err) {
     res.send(err);
   }
