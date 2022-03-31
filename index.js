@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import express from 'express';
+import cors from 'cors';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import swaggerUi from 'swagger-ui-express';
@@ -13,7 +14,7 @@ const require = createRequire(import.meta.url);
 const swaggerFile = require('./swagger_output.json');
 
 const app = express();
-
+app.use(cors());
 app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.use(bodyParser.json());
 app.use('/chains', chainsRoutes);
