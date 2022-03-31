@@ -1,7 +1,13 @@
 import Hotel from '../models/Hotel.js';
 
 export const showAll = async (req, res) => {
-  const hotel = await Hotel.find();
+  const { nonChain } = req.body;
+  let hotel;
+  if (nonChain) {
+    hotel = await Hotel.find({'isChain':false});
+  } else {
+    hotel = await Hotel.find();
+  }
   res.send(hotel);
 };
 
