@@ -8,7 +8,7 @@ Here is my answer to Technical questions for this project: [Answers.md](https://
 
 ## Deployment
 
-- Click [here](https://quoality.herokuapp.com/) to view the documentation of the Quoality API and test the endpoints.
+- Click [here](https://quoality.herokuapp.com/doc) to view the documentation of the Quoality API and test the endpoints.
 
 ## ER Diagram 
 

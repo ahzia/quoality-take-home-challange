@@ -14,7 +14,7 @@ const swaggerFile = require('./swagger_output.json');
 
 const app = express();
 
-app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerFile));
+app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.use(bodyParser.json());
 app.use('/chains', chainsRoutes);
 app.use('/hotels', hotelsRoute);
