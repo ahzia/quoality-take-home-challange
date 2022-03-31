@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import Guest from './Guest.js';
 
 const { Schema } = mongoose;
 
@@ -28,14 +27,14 @@ const fields = {
   services: [{
     type: Schema.Types.ObjectId,
     ref: 'Service',
-  }],
+  }]
 };
 
 const schema = new Schema(fields);
-schema.pre('remove', (next) => {
-  // await Guest.remove({hotel: this._id});
-  Guest.deleteMany({ hotel: this._id });
-  next();
-});
+// schema.pre('remove', (next) => {
+//   // await Guest.remove({hotel: this._id});
+//   Guest.deleteMany({ hotel: this._id });
+//   next();
+// });
 
 export default mongoose.model('Hotel', schema);
