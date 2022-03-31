@@ -3,7 +3,7 @@
 > Quoality: An Ancillary Services Management platform for Hotels, Hostels, and Vacation Homes to help them improve the guest experience and generate additional revenue.
 I was applied for full stack development job in Quoality and this small project was assigned to me as a technical assesment.
 
-Here is my answer to Technical questions for this project: [Answers.md](https://github.com/ahzia/quoality-take-home-challange/answers.md)
+Here is my answer to Technical questions for this project: [Answers.md](./answers.md)
 
 
 ## Deployment
