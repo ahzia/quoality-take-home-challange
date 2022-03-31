@@ -1,6 +1,14 @@
 import express from 'express';
 import {
-  showAll, create, show, destroy, update, showAllServices, createService, showAllGuests, createGuest,
+  showAll,
+  create,
+  show,
+  destroy,
+  update,
+  showAllServices,
+  createService,
+  showAllGuests,
+  createGuest,
 } from '../controllers/hotels.js';
 
 const router = express.Router();

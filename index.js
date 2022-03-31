@@ -16,12 +16,8 @@ app.use('/services', servicesRoute);
 app.use('/guests', guestsRoute);
 
 const PORT = 5000;
-try {
-  mongoose.connect(
-    process.env.DB_CONNECTION,
-    () => console.log('DB connected'),
-  );
-} catch (err) {
-  console.log(err);
-}
+mongoose.connect(
+  process.env.DB_CONNECTION,
+  () => console.log('DB connected'),
+);
 app.listen(PORT, () => console.log(`Server running on port: http://localhost:${PORT}`));
