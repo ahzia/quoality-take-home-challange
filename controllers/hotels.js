@@ -63,3 +63,29 @@ export const destroy = async (req, res) => {
     res.send(err);
   }
 };
+
+export const showAllServices = async (req, res) => {
+  const { _id } = req.params;
+  try {
+    const services = await Hotel.find({ hotel: _id });
+    res.send(services);
+  } catch (err) {
+    res.send(err);
+  }
+};
+
+export const createService = async (req, res) => {
+  const { _id } = req.params;
+  const { name, address } = req.body;
+  const newServce = new Hotel({
+    name,
+    hotel: _id,
+  });
+  try {
+    await newServce.save();
+    await hotel.updateOne({ _id: newServce.hotel }, { $push: { services: newServce._id } });
+    res.send(newServce);
+  } catch (err) {
+    res.send(err);
+  }
+};
