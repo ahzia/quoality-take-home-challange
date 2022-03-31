@@ -6,7 +6,6 @@ const fields = {
   name: {
     type: String,
     required: true,
-    unique: true,
   },
   hotel: {
     type: Schema.Types.ObjectId,
@@ -23,7 +22,7 @@ const fields = {
       unique: true,
     },
     price: {
-      type: Float32Array,
+      type: Number,
     },
     details: {
       type: String,
